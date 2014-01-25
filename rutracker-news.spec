@@ -1,9 +1,9 @@
-Name:		rutracker-news
-Version:	0.1
-Release:	1
 Summary:	Rutracker.org new releases fetcher
-Group:		Networking/News
+Name:		rutracker-news
+Version:	0.2
+Release:	1
 License:	GPLv2+
+Group:		Networking/News
 URL:		http://code.google.com/p/rutracker-news/
 Source:		http://rutracker-news.googlecode.com/files/%{name}-%{version}.tar.bz2
 BuildRequires:	imagemagick
@@ -11,10 +11,20 @@ BuildRequires:	qt4-devel
 
 %description
 Rutracker.org new releases fetcher. Supports most popular subforums (various
-movies, TV series, anime etc). Fetches also IMDB ratings where it's pissible.
+movies, TV series, anime etc). Fetches also IMDB ratings where it's possible.
 See project homepage for more info.
 
 GUI in Russian only (other languages make no sense for this application).
+
+%files
+%doc AUTHORS COPYING
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_liconsdir}/%{name}.png
+%{_miconsdir}/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -43,12 +53,4 @@ Terminal=false
 Type=Application
 Categories=Qt;Network;News;
 EOF
-
-%files
-%doc AUTHORS COPYING
-%{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_liconsdir}/%{name}.png
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/hicolor/*/apps/%{name}.png
 
