@@ -1,13 +1,24 @@
+%bcond_with qt5
+
 Summary:	Rutracker.org new releases fetcher
 Name:		rutracker-news
-Version:	0.2
+Version:	0.3
 Release:	1
 License:	GPLv2+
 Group:		Networking/News
-URL:		http://code.google.com/p/rutracker-news/
-Source:		http://rutracker-news.googlecode.com/files/%{name}-%{version}.tar.bz2
+Url:		http://code.google.com/p/rutracker-news/
+# http://rutracker-news.googlecode.com/archive/%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	imagemagick
+%if %{with qt5}
+BuildRequires:	qmake5
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Widgets)
+%else
 BuildRequires:	qt4-devel
+%endif
 
 %description
 Rutracker.org new releases fetcher. Supports most popular subforums (various
@@ -30,7 +41,11 @@ GUI in Russian only (other languages make no sense for this application).
 %setup -q
 
 %build
+%if %{with qt5}
+%qmake_qt5
+%else
 %qmake_qt4
+%endif
 %make
 for N in 16 32 64 128; do convert %{name}.png -resize ${N}x${N} $N.png; done
 
