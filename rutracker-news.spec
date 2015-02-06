@@ -3,7 +3,7 @@
 Summary:	Rutracker.org new releases fetcher
 Name:		rutracker-news
 Version:	0.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Networking/News
 Url:		http://code.google.com/p/rutracker-news/
