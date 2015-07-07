@@ -2,13 +2,13 @@
 
 Summary:	Rutracker.org new releases fetcher
 Name:		rutracker-news
-Version:	0.3
-Release:	2
+Version:	0.4
+Release:	1
 License:	GPLv2+
 Group:		Networking/News
-Url:		http://code.google.com/p/rutracker-news/
-# http://rutracker-news.googlecode.com/archive/%{version}.tar.gz
-Source0:	%{name}-%{version}.tar.bz2
+Url:		https://github.com/Pulfer/rutracker-news
+# From git by tag, https://github.com/Pulfer/rutracker-news/archive/%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 BuildRequires:	imagemagick
 %if %{with qt5}
 BuildRequires:	qmake5
@@ -61,7 +61,9 @@ mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/%{name}.desktop << EOF
 [Desktop Entry]
 Name=Rutracker News
+Name[ru]=Rutracker News
 Comment=Rutracker.org new releases fetcher
+Comment[ru]=Просмотр информации о новых релизах на Rutracker.org
 Exec=%{name}
 Icon=%{name}
 Terminal=false
